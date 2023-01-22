@@ -6,4 +6,4 @@ Image Generator AI is Powerful Image Generator Web App used to create and downlo
 
 <a href="https://www.buymeacoffee.com/lalshubham" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 140px !important;" ></a>
 
-## Still working on it. Hold your patience for the final project
+## Feel free to fork this repo and add some new features to it.
