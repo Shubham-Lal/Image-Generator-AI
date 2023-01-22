@@ -10,7 +10,6 @@ export default function App() {
         <Link to="/">
           <img src={logo} alt="logo" className="w-60 object-contain" />
         </Link>
-
         <Link to="/create-post" className="font-inter font-medium bg-[#6469ff] text-white px-4 py-1 rounded-md">
           Create
         </Link>
