@@ -11,11 +11,11 @@ export default function CreatePost() {
     prompt: "",
     photo: "",
   });
-  const [generatingImg, setGeneratimgImg] = useState(false);
+  const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value});
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSurpriseMe = () => {
@@ -23,22 +23,72 @@ export default function CreatePost() {
     setForm({ ...form, prompt: randomPrompt })
   };
 
-  const generateImage = () => {
+  const generateImage = async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingImg(true);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/img`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
 
+        const data = await response.json();
+
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      }
+      catch (err) {
+        alert(err);
+      }
+      finally {
+        setGeneratingImg(false);
+      }
+    }
+    else {
+      alert("Please enter a topic");
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if (form.prompt && form.photo) {
+      setLoading(true);
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(form)
+        });
+
+        await response.json();
+        navigate("/");
+      }
+      catch (err) {
+        alert(err);
+      }
+      finally {
+        setLoading(false);
+      }
+    }
+    else {
+      alert("Plaese fill out all the required fields");
+    }
   };
 
   return (
     <section className="max-w-7xl mx-auto">
-      <div>
+      {/* <div>
         <h1 className="font-extrabold text-[#222328] text-[25px]">Create</h1>
         <p className="mt-2 text-justify text-[#666e75] text-[16px] max-w-[500px]">Create imaginative and visually stunning images generated through Image Generator AI and share them with the community</p>
-      </div>
+      </div> */}
 
-      <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
+      {/* <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}> */}
+      <form className="max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField
             labelName="Your Name"
@@ -49,7 +99,7 @@ export default function CreatePost() {
             handleChange={handleChange}
           />
           <FormField
-            labelName="Prompt"
+            labelName="Topic"
             type="text"
             name="prompt"
             placeholder="I need you like a heart needs a beat"
@@ -91,12 +141,12 @@ export default function CreatePost() {
           </button>
         </div>
 
-        <div className="mt-10 mb-14">
+        <div className="mt-8 mb-14">
           <p className="mt-2 text-[#666e75] text-[14px]">
             Once you have generated the image, you can share it with others in the community.
           </p>
           <button
-          type="submit" 
+            type="submit"
             className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             {loading ? "Sharing..." : "Share with the community"}
