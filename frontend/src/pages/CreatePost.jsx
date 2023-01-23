@@ -82,7 +82,7 @@ export default function CreatePost() {
   return (
     <section className="max-w-7xl mx-auto">
       <div>
-        <h1 className="font-extrabold text-[#222328] text-[32px]">Create</h1>
+        <h1 className="font-extrabold text-[#222328] text-[32px]">Create Your Awesome Imagination</h1>
         <p className="mt-2 text-justify text-[#666e75] text-[16px] max-w-[500px]">Create imaginative and visually stunning images generated through Image Generator AI and share them with the community</p>
       </div>
 
