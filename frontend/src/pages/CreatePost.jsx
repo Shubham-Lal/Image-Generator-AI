@@ -81,13 +81,13 @@ export default function CreatePost() {
 
   return (
     <section className="max-w-7xl mx-auto">
-      {/* <div>
+      <div>
         <h1 className="font-extrabold text-[#222328] text-[25px]">Create</h1>
         <p className="mt-2 text-justify text-[#666e75] text-[16px] max-w-[500px]">Create imaginative and visually stunning images generated through Image Generator AI and share them with the community</p>
-      </div> */}
+      </div>
 
-      {/* <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}> */}
-      <form className="max-w-3xl" onSubmit={handleSubmit}>
+      <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
+      {/* <form className="max-w-3xl" onSubmit={handleSubmit}> */}
         <div className="flex flex-col gap-5">
           <FormField
             labelName="Your Name"
