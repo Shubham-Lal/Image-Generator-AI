@@ -47,3 +47,6 @@ NODE_VERSION = 16.14.1 (Optional)
 ```
 
 Step 9: After adding the above mentioned variable to your .env file execute `npm run dev` command. This will start local frontend server on your local area network.
+
+### Snapshot of the application
+![Screenshot (314)](https://user-images.githubusercontent.com/111045472/225551881-eedd54a2-99fa-4e50-b0e4-04c867887c3c.png)
