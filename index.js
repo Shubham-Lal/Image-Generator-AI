@@ -18,8 +18,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+const allowedOrigins = [process.env.FRONTEND_URL];
 const corsOptions = {
-    origin: '*',
+    origin: allowedOrigins,
     credentials: true,
     optionSuccessStatus: 200,
 }
