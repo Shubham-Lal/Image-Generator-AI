@@ -11,16 +11,8 @@ dotenv.config();
 const app = express();
 app.use(express.json({ limit: "50mb" }));
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Set-Cookie: cross-site-cookie=whatever; SameSite=None; Secure");
-  next();
-});
-
-const allowedOrigins = [process.env.FRONTEND_URL];
 const corsOptions = {
-    origin: allowedOrigins,
+    origin: "*",
     credentials: true,
     optionSuccessStatus: 200,
 }
