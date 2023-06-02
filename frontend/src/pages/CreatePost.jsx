@@ -33,7 +33,6 @@ export default function CreatePost() {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({ prompt: form.prompt }),
-          mode: 'no-cors' // added mode option
         });
         const data = await response.json();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
