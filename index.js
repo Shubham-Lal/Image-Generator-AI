@@ -18,7 +18,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-
 app.use("/api/v1/post", postRoutes);
 app.use("/api/v1/img", imgaiRoutes);
 
