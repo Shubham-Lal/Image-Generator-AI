@@ -26,7 +26,7 @@ router.route('/').post(async (req, res) => {
     const image = aiResponse.data.data[0].b64_json;
 
     // Set the Access-Control-Allow-Origin header with the client's origin
-    res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
+    res.header('Access-Control-Allow-Origin', "*");
     res.status(200).json({ photo: image });
   } catch (error) {
     console.error(error);
